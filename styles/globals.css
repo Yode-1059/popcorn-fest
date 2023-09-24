@@ -7,7 +7,7 @@ body{
 }
 
 .cover {
-  background-image: url(../asset/ポップコーンケース.png);
+  background-image: url(ポップコーンケース.png);
   background-repeat: no-repeat;
   background-position: center top;
   background-size: cover;
