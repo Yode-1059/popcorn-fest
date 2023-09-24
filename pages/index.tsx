@@ -18,7 +18,15 @@ const searchClient = algoliasearch(
   "54e16b8d6a82a516e1de8970996ba623"
 );
 
-const Search = () => {
+interface PostProps {
+  post: {
+    img: string;
+    // 他にも必要なプロパティがあればここに追加
+  };
+}
+
+const Search: React.FC<PostProps> = ({ post }) => {
+
   const search: SearchBoxProps["queryHook"] = (query, hook) => {
     console.log("検索実行",hook(query));
     if(query.trim()) {
@@ -72,7 +80,14 @@ const Search = () => {
           <Configure hitsPerPage={20} />
           <div className="flex">
     <ol className="ais-Hits-list flex w-full">
-      <Hits hitComponent={({ hit }) => <PostItem post={hit} />} />
+      <Hits hitComponent={({ hit }) => {
+  // hitオブジェクトがimgプロパティを持っているか確認してからPostItemコンポーネントに渡す
+  if (hit.img) {
+    return <PostItem post={hit} />;
+  }
+  // imgプロパティがない場合のフォールバック処理（例：何も描画しない、エラーメッセージを表示する等）
+  return null;
+}} />
     </ol>
   </div>
           </div>}
