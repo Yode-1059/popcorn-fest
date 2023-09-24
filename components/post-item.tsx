@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Modal from './modal';
 
 
-const PostItem: React.FC<any> = ({ hit }) => {
+const PostItem: React.FC<any> = ({ post }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleImageClick = () => {
@@ -27,10 +27,10 @@ const PostItem: React.FC<any> = ({ hit }) => {
 
   return (
     <div>
-      <img src={hit.img} alt="" className="w-full h-full object-cover aspect-square" onClick={handleImageClick} />
+      <img src={post.img} alt="" className="w-full h-full object-cover aspect-square" onClick={handleImageClick} />
       {isModalOpen && (
         <Modal
-          imgSrc={hit.img}
+          imgSrc={post.img}
           onClose={handleCloseModal}
         />
       )}
