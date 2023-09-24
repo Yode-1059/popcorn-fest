@@ -1,14 +1,8 @@
 import React, { useState } from 'react'
 import Modal from './modal';
 
-interface PostProps {
-  post: {
-    img: string;
-    // 他のpostプロパティもここに追加できます
-  };
-}
 
-const PostItem: React.FC<PostProps> = ({ post }) => {
+const PostItem: React.FC<any> = ({ hit }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleImageClick = () => {
@@ -33,10 +27,10 @@ const PostItem: React.FC<PostProps> = ({ post }) => {
 
   return (
     <div>
-      <img src={post.img} alt="" className="w-full h-full object-cover aspect-square" onClick={handleImageClick} />
+      <img src={hit.img} alt="" className="w-full h-full object-cover aspect-square" onClick={handleImageClick} />
       {isModalOpen && (
         <Modal
-          imgSrc={post.img}
+          imgSrc={hit.img}
           onClose={handleCloseModal}
         />
       )}

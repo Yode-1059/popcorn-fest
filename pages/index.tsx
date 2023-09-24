@@ -12,7 +12,6 @@ import {
 } from "react-instantsearch-hooks-web";
 import PostItem from '@/components/post-item';
 import Update from './update';
-
 const searchClient = algoliasearch(
   "J0TGB8Y5YU",
   "54e16b8d6a82a516e1de8970996ba623"
@@ -81,12 +80,7 @@ const Search: React.FC<PostProps> = ({ post }) => {
           <div className="flex">
     <ol className="ais-Hits-list flex w-full">
       <Hits hitComponent={({ hit }) => {
-  // hitオブジェクトがimgプロパティを持っているか確認してからPostItemコンポーネントに渡す
-  if (hit.img) {
-    return <PostItem post={hit} />;
-  }
-  // imgプロパティがない場合のフォールバック処理（例：何も描画しない、エラーメッセージを表示する等）
-  return null;
+    return <PostItem post={hit} />
 }} />
     </ol>
   </div>
