@@ -10,9 +10,7 @@ import {
   SearchBoxProps,
   useInstantSearch,
 } from "react-instantsearch-hooks-web";
-import { debounce } from "debounce";
 import PostItem from '@/components/post-item';
-import { global } from 'styled-jsx/css';
 import Update from './update';
 
 const searchClient = algoliasearch(
@@ -53,7 +51,7 @@ const Search = () => {
               <img className='logo__img' src="logo2.png"></img>
               <div className=' flex'>
           <SearchBox
-          queryHook={debounce(search, 500)}
+                  queryHook={search}
           classNames={{
             root: "w-2/3",
             input: "form__search",
