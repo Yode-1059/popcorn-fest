@@ -27,7 +27,12 @@ const PostItem: React.FC<any> = ({ post }) => {
 
   return (
     <div>
-      <img src={post.img} alt="" className="w-full h-full object-cover aspect-square" onClick={handleImageClick} />
+      {post ? (
+        <img src={post.img} alt="" className="w-full h-full object-cover aspect-square" onClick={handleImageClick} />
+      ) : (
+        // postがundefinedの場合のフォールバックUIを表示
+        <div>Loading...</div>
+      )}
       {isModalOpen && (
         <Modal
           imgSrc={post.img}
